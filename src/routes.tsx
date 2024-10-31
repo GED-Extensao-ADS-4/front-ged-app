@@ -1,6 +1,8 @@
-import { ReactElement, Suspense } from "react";
+import { ReactElement } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Layout from "./layout/Layout";
 import Home from "./pages/Home";
+import Pagina404 from "./pages/404";
 
 /**
  * @description Rotas da App.
@@ -10,11 +12,13 @@ import Home from "./pages/Home";
 const Rotas = (): ReactElement => (
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+
+                <Route path="*" element={<Pagina404 />} />
+            </Route>
 
             //TODO: add rotas privadas
-
-            <Route path="*" element={<h1>Eita, não encontramos esta página...</h1>} />
         </Routes>
     </BrowserRouter>
 );
