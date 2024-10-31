@@ -1,11 +1,11 @@
 import { ReactElement } from 'react'
 import './App.css'
+import Rotas from './routes';
 
-const App = (): ReactElement => {
-  //TODO: add uso Routes
-  return (
-    <h1>GED - APAE</h1>
-  );
-}
+/**
+ * @description App principal.
+ * @author Lucas Ronchi <@lucas0headshot>
+ */
+const App = (): ReactElement => <Rotas />;
 
 export default App;
