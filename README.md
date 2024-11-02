@@ -1,6 +1,24 @@
-# front-ged-app
-Front-end da aplicação gerenciadora de documentos para APAE de Criciúma
+# Projeto Integrador - APAE Criciúma (Front-End)
 
+Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma, desenvolvido em React com TypeScript. Ele fornece uma interface amigável para o gerenciamento de arquivos, complementando o Back-End desenvolvido em SpringBoot.
+
+---
+
+## Guia Inicial do Projeto
+
+### Pré-requisitos
+
+- **Node.js** versão 18+
+- **NPM** (gerenciador de pacotes do Node.js) ou **Yarn**
+- **IDE** de sua escolha (ex.: VS Code)
+
+---
+
+## Clonar o repositório
+
+Clone o repositório na pasta que preferir do seu computador com o seguinte comando no seu terminal:
+```bash
+git clone https://github.com/JuannCarloss/ged-app-frontend.git
 
 
 # Commit Standards (Padrões de Commit)
