@@ -19,7 +19,7 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
 Clone o repositório na pasta que preferir do seu computador com o seguinte comando no seu terminal:
 ```bash
 git clone https://github.com/JuannCarloss/ged-app-frontend.git
-
+```
 
 # Commit Standards (Padrões de Commit)
 
