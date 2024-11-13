@@ -13,6 +13,7 @@
 
   <img alt="GitHub License" src="https://img.shields.io/github/license/GED-Extensao-ADS-4/front-ged-app">
 
+  <img alt="GitHub Releases" src="https://img.shields.io/github/v/release/GED-Extensao-ADS-4/ged-app?logo=GitHub">
 
 <p align="center">
   <a href="#-sobre-o-projeto">Sobre</a> •
