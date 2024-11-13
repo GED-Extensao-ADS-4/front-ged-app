@@ -2,6 +2,10 @@
     <img alt="logo" title="GED - APAE" src="/.github/logo.png" />
 </h1>
 
+<h4 align="center">
+	🚧  GED - APAE 📂 Em andamento 🚀 🚧
+</h4>
+
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/GED-Extensao-ADS-4/front-ged-app">
 
@@ -60,7 +64,6 @@ Clone o repositório na pasta que preferir do seu computador com o seguinte coma
 ```bash
   git clone https://github.com/GED-Extensao-ADS-4/front-ged-app
 ```
----
 
 ## Após clonar
 
@@ -70,6 +73,8 @@ Clone o repositório na pasta que preferir do seu computador com o seguinte coma
   npm i && npm run dev
 ```
 - Acesse a aplicação através da URL informada pelo Vite - Exemplo: http://localhost:5173/
+
+---
 
 ## [Padrões de Commits](https://github.com/iuricode/padroes-de-commits)
 
@@ -200,6 +205,40 @@ B -- Tenta mandar alterações --> C[Erro Upstream Branch]
 
 Seguindo as experiências que o fulaninho compartilhou com a gente, vamos evitar **MUITA** dor de cabeça com o versionamento desse projeto, por mais que não vamos fazer nada de muito grandioso *(até por que não vai dar tempo)*, ainda assim vão ser várias pessoas acessando o mesmo repositório ao mesmo tempo.
 > **Atenção:** Se ainda estiver com dúvidas sobre este fluxo, pode entrar em contato comigo ou com alguém que ja tenha feito e entendido para te ajudar, melhor previnir que remediar!!
+
+---
+
+## Pull Requests
+Segue explicativo de como usar o template para contribuir usando os PRs:
+
+[_Use como referência a documentação do Conventional Commits_](https://github.com/iuricode/padroes-de-commits)
+
+1. Preencher informações relevantes como:
+
+    _Seções não usadas devem ser apagadas_
+    - Descrição | **Evidenciar o que foi feito**
+
+    - Problema Relacionado(Se houver)
+
+    - Checklist - **Use enquanto estiver criando o PR**
+
+    - Capturas de tela(Se houver)
+
+    - Notas adicionais | **Use para destacar informações úteis para quem for revisar**
+
+        Exemplo: Tarefa relacionada: [#1](link)
+
+2. Informar revisor(es)
+
+3. Atribuir usuários
+
+4. Adicionar tag/label - **Indica o contexto do PR, como "bug"**
+
+6. Revisar
+
+7. Criar
+
+8. Informar e solicitar aprovação
 
 ---
 
