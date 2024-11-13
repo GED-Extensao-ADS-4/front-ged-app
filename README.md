@@ -8,15 +8,15 @@
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/GED-Extensao-ADS-4/front-ged-app">
 
   <img alt="GitHub License" src="https://img.shields.io/github/license/GED-Extensao-ADS-4/front-ged-app">
-</p>
+
 
 <p align="center">
- <a href="#-sobre-o-projeto">Sobre</a> •
- <a href="#-funcionalidades">Funcionalidades</a> •
- <a href="#-tecnologias">Tecnologias</a> •
- <a href="#-autores">Autores</a> •
- <a href="#user-content--licença">Licença</a> •
- <a href="#como-contribuir">Como Contribuir</a>
+  <a href="#-sobre-o-projeto">Sobre</a> •
+  <a href="#-funcionalidades">Funcionalidades</a> •
+  <a href="#-tecnologias">Tecnologias</a> •
+  <a href="#-autores">Autores</a> •
+  <a href="#barber-como-contribuir">Como Contribuir</a> •
+  <a href="#-licença">Licença</a>
 </p>
 
 # 💻 Sobre o projeto
@@ -52,18 +52,26 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
 
 ---
 
+# :barber: Como Contribuir
+
 ## Clonar o repositório
 
 Clone o repositório na pasta que preferir do seu computador com o seguinte comando no seu terminal:
 ```bash
-git clone https://github.com/JuannCarloss/ged-app-frontend.git
+  git clone https://github.com/GED-Extensao-ADS-4/front-ged-app
 ```
-
 ---
 
-# :barber: Como Contribuir
+## Após clonar
 
-## Commit Standards (Padrões de Commit)
+- Abra o projeto na sua [IDE favorita](https://medium.com/codex/the-top-10-ides-for-programmers-a-comprehensive-guide-to-choosing-the-best-ide-for-your-needs-c72e97c34591)
+- Abra o terminal interno da IDE e execute o seguinte comando nele:
+```bash
+  npm i && npm run dev
+```
+- Acesse a aplicação através da URL informada pelo Vite - Exemplo: http://localhost:5173/
+
+## [Padrões de Commits](https://github.com/iuricode/padroes-de-commits)
 
 Como nosso foco nesse projeto vai ser a documentação para deixar esse lindo legado para as próximas turmas de ADS modificarem o mesmo, o mais correto a se fazer é seguirmos alguns padrões pelo menos de documentação para que eles possam se encontrar com mais facilidade no futuro, por isso pensei em seguirmos alguns padrões de commits para esse projeto
 
@@ -126,19 +134,19 @@ Temos duas soluções possíveis para esse caso, vou explicar as duas abaixo:
 #### 1° Solução - Git Stash (para quando a bomba ja explodiu):
 
 Agora, fulaninho vendo a mensagem de erro pensa "**puts, e se alguém mexeu na mesma classe que a minha ? Se eu atualizar vai sobreescrever tudo o que eu fiz!**, e o fulaninho esta mais que certo. É nesse momento que o comando <b>``git stash``</b> pode vir a calhar.
-  
+
 ### O que o git stash faz ?
 O <b>``git stash``</b> guarda todas as suas alterações locais dentro de uma "caixinha", te dando assim a liberdade de receber qualquer modificação **remota** da branch que você está atualmente. Como assim ?
 
 Fulaninho se viu diante do problema e lembrou do comando <b>``git stash``</b>, quando ele executa esse comando, todas as suas **modificações** são "guardadas" dentro dessa caixinha e somem do arquivo atual, dando espaço para as **atualizações remotas**.
 
-Okay, com suas mudanças dentro dessa **"caixinha"**, agora fulaninho está livre para fazer o **git pull** e receber essas mudanças sem perder o que ele já tinha feito **(o que ele fez esta dentro da caixinha do stash)**, após executar o <b>``git pull``</b> e receber as modificações, o próximo comando seria **"liberar"** essas modificações guardadas na caixinha, certo ? 
+Okay, com suas mudanças dentro dessa **"caixinha"**, agora fulaninho está livre para fazer o **git pull** e receber essas mudanças sem perder o que ele já tinha feito **(o que ele fez esta dentro da caixinha do stash)**, após executar o <b>``git pull``</b> e receber as modificações, o próximo comando seria **"liberar"** essas modificações guardadas na caixinha, certo ?
 
 **Errado!!!** Se ele fazer isso, persistiria no erro de estar modificando direto na branch **main** do projeto e continuaria se colocando em risco da mesma bomba explodir de novo.
 
 Fulaninho agora com toda sua carga de experiência provida pelos erros que ele cometeu em sua vida, cria uma **nova branch** específica para sua tarefa **(spoiler da 2° solução)**, ele acessa essa branch e finalmente pode **"liberar"** essas mudanças nessa nova branch, dessa forma, dentro da **branch** que ele criou, ele executa o seguinte comando <b>``git stash apply``</b>, que **"abre"** aquela caixinha e coloca todas as modificações dele nessa nova branch.
 
-O flow ficaria dessa forma: 
+O flow ficaria dessa forma:
 ```mermaid
 graph TD
 A[git stash] -- Guarda na Caixinha --> B[git checkout]
@@ -170,7 +178,7 @@ Ao ver esse erro, fulaninho, um cara muito informado, executa o seguinte comando
 
 Ao executar o comando <b>``git checkout -b crud-usuarios``</b>, fulaninho criou uma branch **local**, isso quer dizer que essa branch **crud-usuarios** existe apenas na máquina dele, por isso ao executar o **git push** o erro citado acima ocorre, por isso executamos o <b>``git push --set-upstream-to origin crud-usuarios``</b> que força a criação dessa branch no repositório **remoto**
 
-O flow ficaria dessa forma: 
+O flow ficaria dessa forma:
 ```mermaid
 graph TD
 A[git checkout] -- Cria e Acessa a nova Branch --> B[git push]
