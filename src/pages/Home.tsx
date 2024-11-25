@@ -5,10 +5,8 @@ import { ReactElement } from "react";
  * @since 31/10/2024
  * @author Lucas Ronchi <@lucas0headshot>
  */
-const Home = (): ReactElement => {
-    return (
-        <h1>GED - APAE | Em desenvolvimento</h1>
-    )
-};
+const Home = (): ReactElement => (
+    <h1>GED - APAE | Em desenvolvimento</h1>
+);
 
 export default Home;
