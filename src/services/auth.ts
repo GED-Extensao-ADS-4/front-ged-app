@@ -4,7 +4,7 @@
  * @since 25/11/2024
  * @see https://blog.rocketseat.com.br/reactjs-autenticacao/
  */
-export const TOKEN_KEY: string = "@airbnb-Token";
+export const TOKEN_KEY: string = "@ged-apae-token";
 
 
 /**
