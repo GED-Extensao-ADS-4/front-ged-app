@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import Rotas from './routes/routes';
+import "./assets/css/style.css";
 
 /**
  * @description App principal.
