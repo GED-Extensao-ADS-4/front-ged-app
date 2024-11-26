@@ -2,6 +2,8 @@ import { ReactElement } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import BarreiraContraErros from './BarreiraContraErros';
 import { Outlet } from 'react-router-dom';
+import Header from './Header';
+import Footer from './Footer';
 
 /**
  * @description Layout do App. Contém a estrutura base da pág.
@@ -10,16 +12,17 @@ import { Outlet } from 'react-router-dom';
  * @since 31/10/2024
  */
 const Layout = (): ReactElement => (
-    <>
-        //TODO: add Header, Footer e etc
-        <Container>
-            <Row>
-                <BarreiraContraErros>
-                    <Outlet />
-                </BarreiraContraErros>
-            </Row>
-        </Container>
-    </>
+    <Container>
+        <Header />
+
+        <Row>
+            <BarreiraContraErros>
+                <Outlet />
+            </BarreiraContraErros>
+        </Row>
+
+        <Footer />
+    </Container>
 );
 
 export default Layout;
