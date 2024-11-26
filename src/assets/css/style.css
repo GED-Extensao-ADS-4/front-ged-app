@@ -1,0 +1,22 @@
+.bg-blue {
+    background: #007BFF repeat;
+    color: #FFF;
+}
+
+.text-blue {
+    color: #007BFF;
+}
+
+
+.mapa {
+    width: 80%;
+    height: auto;
+}
+
+.logo {
+    width: 70%;
+    height: auto;
+}
+.logo-wrapper {
+    text-align: center;
+}
