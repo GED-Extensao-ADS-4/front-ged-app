@@ -20,3 +20,9 @@
 .logo-wrapper {
     text-align: center;
 }
+
+
+.btn-white {
+    background: #FFF !important;
+    color: #007BFF !important;
+}
