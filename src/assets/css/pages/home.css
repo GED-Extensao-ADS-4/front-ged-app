@@ -1,0 +1,8 @@
+.card-blue,
+.card-blue a {
+    background: #007BFF !important;
+    color: #FFEA01 !important;
+    border: 5px solid #FFEA01 !important;
+    max-width: 400px !important;
+    max-height: 400px !important;
+}
