@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../components/layout/Layout";
+import HomeAlunos from "../pages/alunos/HomeAlunos";
 
 /**
  * @description Rotas privadas da App.
@@ -14,6 +15,8 @@ const RotasPrivadas = (): ReactElement => (
         <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="*" element={<Navigate to="/" replace />} />
+
+            <Route path="alunos" element={<HomeAlunos />} />
         </Route>
     </Routes>
 );
