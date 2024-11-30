@@ -6,7 +6,7 @@ import { ReactElement } from "react";
  * @author Lucas Ronchi <@lucas0headshot>
  */
 const Header = (): ReactElement => (
-    <header>
+    <header className="header">
         <h1>GED - APAE</h1>
     </header>
 );

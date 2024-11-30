@@ -1,8 +1,42 @@
-.card-blue,
-.card-blue a {
+.card-blue {
     background: #007BFF !important;
     color: #FFEA01 !important;
-    border: 5px solid #FFEA01 !important;
+    border: 3px solid #FFEA01 !important;
     max-width: 400px !important;
-    max-height: 400px !important;
+    height: 300px !important;
+    border-radius: 60px !important;
+}
+
+.text-yellow {
+    color: #FFEA01 !important;
+}
+
+
+
+.card-blue {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 0 5px black;
+    transition: 0.3s ease;
+    min-height: 100%;
+    
+}
+
+.card-blue:hover{
+    transform: scale(1.05) !important;
+}
+
+.row {
+    background-color: white;
+    gap : 60px !important;
+    max-height: 100%;
+
+}
+
+.fundo {
+    padding-top: 10%;
+ 
 }
