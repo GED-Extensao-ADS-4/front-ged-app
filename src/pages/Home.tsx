@@ -2,7 +2,6 @@ import { ReactElement } from "react";
 import "../assets/css/pages/home.css"
 import { Row } from "react-bootstrap";
 import Card from "../components/Home/Card";
-import ModalDelecaoConfirmacao from '../components/modals/ModalDelecaoConfirmacao';
 
 /**
  * @description Página inicial.
@@ -12,8 +11,6 @@ import ModalDelecaoConfirmacao from '../components/modals/ModalDelecaoConfirmaca
  */
 const Home = (): ReactElement => (
     <>
-        <ModalDelecaoConfirmacao item="sus"/>
-
     <Row>
         <Card titulo="Documentos" icone="folder-fill" link="documentos"></Card>
         <Card titulo="Digitalização" icone="folder-fill" link="digitalizacao"></Card>
