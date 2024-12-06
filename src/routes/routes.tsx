@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Login from "../pages/Login";
 import RotasPrivadas from "./RotasPrivadas";
 import { estaAutenticado } from "../services/auth";
+import Cadastro from "../pages/Cadastro";
 
 /**
  * @description Rotas da App.
@@ -19,6 +20,7 @@ const Rotas = (): ReactElement => (
                     : <Route path="/entrar" element={<Login />} />
             }
 
+            <Route path="/cadastro" element={<Cadastro />} />
             <Route path="*" element={<Navigate to="/entrar" />} />
         </Routes>
     </BrowserRouter>
