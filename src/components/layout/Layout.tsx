@@ -12,7 +12,7 @@ import Footer from './Footer';
  * @since 31/10/2024
  */
 const Layout = (): ReactElement => (
-    <Container className="bg-light">
+    <Container className="bg-light" fluid>
         <Header />
 
         <Row>

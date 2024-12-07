@@ -12,16 +12,18 @@ import { BsFileText } from "react-icons/bs";
  * @author Lucas Ronchi <@lucas0headshot>
  */
 const Home = (): ReactElement => (
-    <div className="fundo"> 
-    <Row>
-        <Card titulo="Documentos" icone="folder-fill" link="documentos"></Card>
-        <Card titulo="Digitalização" icone="folder-fill" link="digitalizacao"></Card>
-        <Card titulo="Relatórios" icone={<BsFileText />} link="relatorios"></Card>
-        <Card titulo="Alunos" icone="folder-fill" link="alunos"></Card>
-        <Card titulo="Configurações" icone="engine" link="configuracoes"></Card>
-        <Card titulo="Histórico" icone="history" link="Histórico"></Card>
+  
+      <Row >
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <Card titulo="Documentos" icone={<i class="fa-solid fa-folder-open icones"></i>} link="documentos">
+        </Card>
+        <Card titulo="Digitalização" icone={<i class="fa-solid fa-file icones"></i>} link="digitalizacao"></Card>
+        <Card titulo="Relatórios" icone={<i class="fa-solid fa-rectangle-list icones"></i>} link="relatorios"></Card>
+        <Card titulo="Alunos" icone={<i class="fa-solid fa-address-book icones"></i>} link="alunos"></Card>
+        <Card titulo="Configurações" icone={<i class="fa-solid fa-gears icones"></i>} link="configuracoes"></Card>
+        <Card titulo="Histórico" icone={<i class="fa-solid fa-clock-rotate-left icones"></i>} link="Histórico"></Card>
+     
     </Row>
-    </div>
 );
 
 export default Home;

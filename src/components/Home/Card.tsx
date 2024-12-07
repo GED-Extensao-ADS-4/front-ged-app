@@ -3,7 +3,7 @@ import { Card as CardBootstrap } from "react-bootstrap";
 
 interface CardProps {
     titulo: string,
-    icone: string,
+    icone: ReactElement,
     link: string
 }
 

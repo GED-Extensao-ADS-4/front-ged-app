@@ -21,7 +21,8 @@
     text-align: center;
     box-shadow: 0 0 5px black;
     transition: 0.3s ease;
-    min-height: 100%;
+    min-height: 70px;
+    height : 350px !important;
     
 }
 
@@ -30,13 +31,26 @@
 }
 
 .row {
+    justify-content: center;
+    align-items: center;
     background-color: white;
     gap : 60px !important;
     max-height: 100%;
-
+    padding : 20px !important;
+    padding-top: 60px !important;
+    max-width: 100%;
+    padding-left: 40px !important;
 }
 
 .fundo {
     padding-top: 10%;
  
+}
+
+
+.icones { 
+    font-size: 9rem !important;
+    padding : 2rem; 
+    color: #FFEA01 !important;
+
 }
