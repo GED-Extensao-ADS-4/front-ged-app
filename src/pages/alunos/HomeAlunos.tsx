@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaEdit, FaTrash, FaPlusCircle } from 'react-icons/fa';
 
 
-interface Student {
+interface Aluno {
     id?: number;
     nome: string;
     sobrenome: string;
@@ -17,7 +17,7 @@ interface Student {
     responsavelLegal: string;
 }
 
-const initialFormData: Student = {
+const dadosFormularioIniciais: Aluno = {
     id: undefined,
     nome: '',
     sobrenome: '',
@@ -29,100 +29,100 @@ const initialFormData: Student = {
     responsavelLegal: ''
 };
 
-const Students: React.FC = () => {
-    const [students, setStudents] = useState<Student[]>([]);
-    const [filteredStudents, setFilteredStudents] = useState<Student[]>([]);
-    const [searchTerm, setSearchTerm] = useState<string>(''); 
-    const [selectedStudents, setSelectedStudents] = useState<number[]>([]);
-    const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<string | null>(null);
-    const [success, setSuccess] = useState<boolean>(false);
-    const [showModal, setShowModal] = useState<boolean>(false);
-    const [formData, setFormData] = useState<Student>(initialFormData);
-    const navigate = useNavigate();
+const Alunos: React.FC = () => {
+    const [alunos, setAlunos] = useState<Aluno[]>([]);
+    const [alunosFiltrados, setAlunosFiltrados] = useState<Aluno[]>([]);
+    const [termoBusca, setTermoBusca] = useState<string>(''); 
+    const [alunosSelecionados, setAlunosSelecionados] = useState<number[]>([]);
+    const [carregando, setCarregando] = useState<boolean>(false);
+    const [erro, setErro] = useState<string | null>(null);
+    const [sucesso, setSucesso] = useState<boolean>(false);
+    const [mostrarModal, setMostrarModal] = useState<boolean>(false);
+    const [dadosFormulario, setDadosFormulario] = useState<Aluno>(dadosFormularioIniciais);
+    const navegar = useNavigate();
 
-    const fetchData = async () => {
-        setLoading(true);
+    const buscarDados = async () => {
+        setCarregando(true);
         try {
-            const response = await Axios.get<{ content: Student[] }>('http://localhost:8080/api/alunos');
-            setStudents(response.data.content || []);
-            setFilteredStudents(response.data.content || []); 
+            const resposta = await Axios.get<{ content: Aluno[] }>('http://localhost:8080/api/alunos');
+            setAlunos(resposta.data.content || []);
+            setAlunosFiltrados(resposta.data.content || []); 
         } catch (err) {
-            setError('Erro ao buscar alunos.');
+            setErro('Erro ao buscar alunos.');
         } finally {
-            setLoading(false);
+            setCarregando(false);
         }
     };
 
     useEffect(() => {
-        fetchData();
+        buscarDados();
     }, []);
 
-    const handleDelete = async () => {
+    const handleExcluir = async () => {
         if (!window.confirm('Deseja realmente excluir os alunos selecionados?')) return;
-        setLoading(true);
+        setCarregando(true);
         try {
-            await Promise.all(selectedStudents.map(id => 
+            await Promise.all(alunosSelecionados.map(id => 
                 Axios.delete(`http://localhost:8080/api/alunos/${id}`)
             ));
-            fetchData();
-            setSuccess(true);
-            setTimeout(() => setSuccess(false), 3000);
+            buscarDados();
+            setSucesso(true);
+            setTimeout(() => setSucesso(false), 3000);
         } catch (err) {
-            setError('Erro ao excluir alunos.');
+            setErro('Erro ao excluir alunos.');
         } finally {
-            setLoading(false);
+            setCarregando(false);
         }
     };
 
-    const handleShow = () => {
-        setFormData(initialFormData); // **Limpa o formulário ao abrir o modal**
-        setShowModal(true); 
+    const handleMostrar = () => {
+        setDadosFormulario(dadosFormularioIniciais); 
+        setMostrarModal(true); 
     };
 
-    const handleClose = () => setShowModal(false);
+    const handleFechar = () => setMostrarModal(false);
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleAlterar = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
-        setFormData((prevData) => ({ ...prevData, [name]: value }));
+        setDadosFormulario((dadosAntigos) => ({ ...dadosAntigos, [name]: value }));
     };
 
-    const handleSelectStudent = (id: number) => {
-        setSelectedStudents((prevSelected) =>
-            prevSelected.includes(id)
-                ? prevSelected.filter((selectedId) => selectedId !== id)
-                : [...prevSelected, id]
+    const handleSelecionarAluno = (id: number) => {
+        setAlunosSelecionados((alunosSelecionadosAntigos) =>
+            alunosSelecionadosAntigos.includes(id)
+                ? alunosSelecionadosAntigos.filter((idSelecionado) => idSelecionado !== id)
+                : [...alunosSelecionadosAntigos, id]
         );
     };
 
-    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-        const searchTerm = e.target.value.toLowerCase();
-        setSearchTerm(searchTerm);
-        const filtered = students.filter(student => 
-            student.nome.toLowerCase().includes(searchTerm) || 
-            student.sobrenome.toLowerCase().includes(searchTerm) ||
-            student.cpf.includes(searchTerm)
+    const handleBuscar = (e: ChangeEvent<HTMLInputElement>) => {
+        const termoBusca = e.target.value.toLowerCase();
+        setTermoBusca(termoBusca);
+        const alunosFiltrados = alunos.filter(aluno => 
+            aluno.nome.toLowerCase().includes(termoBusca) || 
+            aluno.sobrenome.toLowerCase().includes(termoBusca) ||
+            aluno.cpf.includes(termoBusca)
         );
-        setFilteredStudents(filtered);
+        setAlunosFiltrados(alunosFiltrados);
     };
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmeter = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLoading(true);
+        setCarregando(true);
         try {
-            if (formData.id) {
-                await Axios.put(`http://localhost:8080/api/alunos/${formData.id}`, formData);
+            if (dadosFormulario.id) {
+                await Axios.put(`http://localhost:8080/api/alunos/${dadosFormulario.id}`, dadosFormulario);
             } else {
-                await Axios.post('http://localhost:8080/api/alunos', formData);
+                await Axios.post('http://localhost:8080/api/alunos', dadosFormulario);
             }
-            handleClose();
-            fetchData();
-            setSuccess(true);
-            setTimeout(() => setSuccess(false), 3000);
+            handleFechar();
+            buscarDados();
+            setSucesso(true);
+            setTimeout(() => setSucesso(false), 3000);
         } catch (err) {
-            setError('Erro ao salvar aluno.');
+            setErro('Erro ao salvar aluno.');
         } finally {
-            setLoading(false);
+            setCarregando(false);
         }
     };
 
@@ -131,10 +131,10 @@ const Students: React.FC = () => {
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <h2 className="text-primary">Lista de Alunos</h2>
                 <div className="d-flex gap-2">
-                    <Button variant="danger" onClick={handleDelete} disabled={selectedStudents.length === 0}>
+                    <Button variant="danger" onClick={handleExcluir} disabled={alunosSelecionados.length === 0}>
                         <FaTrash className="me-2" /> Apagar Selecionados
                     </Button>
-                    <Button variant="primary" onClick={handleShow}>
+                    <Button variant="primary" onClick={handleMostrar}>
                         <FaPlusCircle className="me-2" /> Cadastrar Aluno
                     </Button>
                 </div>
@@ -143,15 +143,15 @@ const Students: React.FC = () => {
             <Form.Control 
                 type="text" 
                 placeholder="Pesquisar por nome, sobrenome ou CPF..." 
-                value={searchTerm} 
-                onChange={handleSearch} 
+                value={termoBusca} 
+                onChange={handleBuscar} 
                 className="mb-3"
             />
 
-            {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">Operação realizada com sucesso!</Alert>}
+            {erro && <Alert variant="danger">{erro}</Alert>}
+            {sucesso && <Alert variant="success">Operação realizada com sucesso!</Alert>}
 
-            {loading ? (
+            {carregando ? (
                 <div className="d-flex justify-content-center my-5">
                     <Spinner animation="border" />
                 </div>
@@ -167,12 +167,12 @@ const Students: React.FC = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {filteredStudents.map((student) => (
-                                <tr key={student.id}>
-                                    <td>{student.nome}</td>
-                                    <td>{student.sobrenome}</td>
-                                    <td>{student.dataNascimento}</td>
-                                    <td>{student.cpf}</td>
+                            {alunosFiltrados.map((aluno) => (
+                                <tr key={aluno.id}>
+                                    <td>{aluno.nome}</td>
+                                    <td>{aluno.sobrenome}</td>
+                                    <td>{aluno.dataNascimento}</td>
+                                    <td>{aluno.cpf}</td>
                                 </tr>
                             ))}
                         </tbody>
@@ -180,19 +180,19 @@ const Students: React.FC = () => {
                 </Card>
             )}
 
-            <Modal show={showModal} onHide={handleClose}>
+            <Modal show={mostrarModal} onHide={handleFechar}>
                 <Modal.Header closeButton>
-                    <Modal.Title>{formData.id ? 'Editar Aluno' : 'Cadastrar Aluno'}</Modal.Title>
+                    <Modal.Title>{dadosFormulario.id ? 'Editar Aluno' : 'Cadastrar Aluno'}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmeter}>
                         <Form.Group controlId="nome" className="mb-3">
                             <Form.Label>Nome</Form.Label>
                             <Form.Control 
                                 type="text" 
                                 name="nome" 
-                                value={formData.nome} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.nome} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -202,8 +202,8 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="text" 
                                 name="sobrenome" 
-                                value={formData.sobrenome} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.sobrenome} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -213,8 +213,8 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="text" 
                                 name="cpf" 
-                                value={formData.cpf} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.cpf} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -224,8 +224,8 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="text" 
                                 name="rg" 
-                                value={formData.rg} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.rg} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -235,8 +235,8 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="date" 
                                 name="dataNascimento" 
-                                value={formData.dataNascimento} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.dataNascimento} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -246,8 +246,8 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="text" 
                                 name="responsavelLegal" 
-                                value={formData.responsavelLegal} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.responsavelLegal} 
+                                onChange={handleAlterar} 
                                 required 
                             />
                         </Form.Group>
@@ -257,15 +257,15 @@ const Students: React.FC = () => {
                             <Form.Control 
                                 type="text" 
                                 name="endereco" 
-                                value={formData.endereco} 
-                                onChange={handleChange} 
+                                value={dadosFormulario.endereco} 
+                                onChange={handleAlterar} 
                             />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" disabled={loading}>
-                            {loading ? <Spinner animation="border" size="sm" /> : 'Salvar'}
+                        <Button variant="primary" type="submit" disabled={carregando}>
+                            {carregando ? <Spinner animation="border" size="sm" /> : 'Salvar'}
                         </Button>
-                        <Button variant="secondary" onClick={handleClose}>
+                        <Button variant="secondary" onClick={handleFechar}>
                             Cancelar
                         </Button>
                     </Form>
@@ -275,4 +275,4 @@ const Students: React.FC = () => {
     );
 };
 
-export default Students;
+export default Alunos;
