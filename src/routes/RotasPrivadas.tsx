@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../components/layout/Layout";
 import HomeAlunos from "../pages/alunos/HomeAlunos";
+import DetalhesUsuario from "../pages/usuario/DetalhesUsuario";
 
 /**
  * @description Rotas privadas da App.
@@ -17,6 +18,10 @@ const RotasPrivadas = (): ReactElement => (
             <Route path="*" element={<Navigate to="/" replace />} />
 
             <Route path="alunos" element={<HomeAlunos />} />
+
+            <Route path="usuario" element={<DetalhesUsuario />} />
+
+
         </Route>
     </Routes>
 );
