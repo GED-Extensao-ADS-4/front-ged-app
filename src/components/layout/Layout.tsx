@@ -15,7 +15,7 @@ const Layout = (): ReactElement => (
     <>
     <Header />
     <Container className="bg-light">
-        <Row>
+        <Row className='d-flex justify-content-center align-items-center w-100  h-100 aumentaTamanho'>
             <BarreiraContraErros>
                 <Outlet />
             </BarreiraContraErros>
