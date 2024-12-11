@@ -1,5 +1,6 @@
 import React from "react";
 import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 /**
  * @description Página dos documentos.
@@ -8,13 +9,14 @@ import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
  * @author Douglas <@Douglas-z>
  */
 const DocumentosPage = (): ReactElement => {
+  const navigate = useNavigate(); 
   return (
     <div className="container mt-4">
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1>Documentos</h1>
         <div>
-          <Button variant="primary" className="me-2">
+          <Button onClick={() => navigate("/cadastrar")} variant="primary" className="me-2" >
             Cadastrar
           </Button>
           <Button variant="warning" className="me-2">
