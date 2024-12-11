@@ -5,8 +5,8 @@ import perfil from '../../assets/css/perfil.png';
 
 function DetalhesUsuario() {
     return (
-        <Row className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
-            <Col
+        <Row className="d-flex flex-lg-row flex-column justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+            <Col 
                 className="mx-3 d-flex flex-column align-items-center" 
                 style={{ minHeight: '50vh', flexGrow: 1 }}
             >
