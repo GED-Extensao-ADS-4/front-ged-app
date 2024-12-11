@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import HomeAlunos from "../pages/alunos/HomeAlunos";
 import HomeDocumentos from "../pages/documentos/HomeDocumentos";
 import DocumentosPage from "../pages/documentos/DocumentosPage";
+import DocumentosEditar from "../pages/documentos/DocumentosEditar";
 
 /**
  * @description Rotas privadas da App.
@@ -19,6 +20,8 @@ const RotasPrivadas = (): ReactElement => (
             <Route path="*" element={<Navigate to="/" replace />} />
             <Route path="alunos" element={<HomeAlunos />} />
             <Route path="documentos" element={<DocumentosPage />} />
+            <Route path="editar" element={<DocumentosEditar />} />
+
         </Route>
     </Routes>
 );

@@ -1,5 +1,8 @@
 import React from "react";
 import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
+import DocumentosEditar from "./DocumentosEditar";
+import { useNavigate } from "react-router-dom";
+
 
 /**
  * @description Página dos documentos.
@@ -7,7 +10,12 @@ import { Table, Button, Form, InputGroup, Pagination } from "react-bootstrap";
  * @since 06/12/2024
  * @author Douglas <@Douglas-z>
  */
-const DocumentosPage = (): ReactElement => {
+const DocumentosPage = (): JSX.Element => {
+  const navigate = useNavigate();
+ 
+  const handleNavigateToEditar = () => {
+    navigate('/editar');
+  };
   return (
     <div className="container mt-4">
       {/* Header */}
@@ -17,7 +25,7 @@ const DocumentosPage = (): ReactElement => {
           <Button variant="primary" className="me-2">
             Cadastrar
           </Button>
-          <Button variant="warning" className="me-2">
+          <Button onClick={handleNavigateToEditar} variant="warning" className="me-2" > 
             Editar
           </Button>
           <Button variant="danger">Excluir</Button>
