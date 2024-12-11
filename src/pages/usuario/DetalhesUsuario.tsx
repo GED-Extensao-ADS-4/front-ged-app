@@ -2,21 +2,19 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import perfil from '../../assets/css/perfil.png';
-import "../../assets/css/pages/Usuario.css"
 
 
 function DetalhesUsuario() {
     return (
 
-        <Container className=" d-flex justify-content-center align-items-center w-100  h-100 ">
 
-           <Row>
+           <Row className= "    d-flex justify-content-center align-items-center w-100  h-100" style={{ minHeight: '100vh' }}>
                 <Col xs={6} md={4}>
                     <Image src={perfil} rounded className=" img-fluid " />
                 </Col>
 
                 <Col>
-                <Button variant="primary">Primary</Button>
+                <Button variant="primary">Informações</Button>
                     <Table striped bordered hover responsive>
                         <tbody>
                             <tr>
@@ -59,7 +57,6 @@ function DetalhesUsuario() {
                     </Table>
                 </Col>
             </Row>
-        </Container>
     );
 }
 
