@@ -5,14 +5,20 @@ import perfil from '../../assets/css/perfil.png';
 
 function DetalhesUsuario() {
     return (
-        <Row className="d-flex justify-content-center align-items-center w-100 h-100" style={{ minHeight: '100vh' }}>
-            <Col xs={6} md={4} className="mx-3">
-                <Image src={perfil} rounded className="img-fluid" />
+        <Row className="d-flex justify-content-center align-items-center" style={{ minHeight: '100vh' }}>
+            <Col
+                className="mx-3 d-flex flex-column align-items-center" 
+                style={{ minHeight: '50vh', flexGrow: 1 }}
+            >
+                <Image src={perfil} width={350} rounded className="img-fluid" />
             </Col>
 
-            <Col className="mx-3">
+            <Col 
+                className="mx-3 d-flex flex-column" 
+                style={{ minHeight: '50vh', flexGrow: 1 }}
+            >
                 <Button variant="primary" className="mb-3">Informações</Button>
-                <Table striped bordered hover responsive>
+                <Table striped bordered hover responsive className='flex-fill'>
                     <tbody>
                         <tr>
                             <th>Nome</th>
@@ -38,7 +44,10 @@ function DetalhesUsuario() {
                 </Table>
             </Col>
 
-            <Col className="mx-3">
+            <Col 
+                className="mx-3 d-flex flex-column" 
+                style={{ minHeight: '50vh', flexGrow: 1 }}
+            >
                 <Button variant="primary" className="mb-3">Últimos Arquivos</Button>
                 <Table striped bordered hover size="sm">
                     <thead>
