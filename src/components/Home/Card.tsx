@@ -13,16 +13,16 @@ interface CardProps {
  * @see https://react-bootstrap.netlify.app/docs/components/cards/
  */
 const Card = (props: CardProps): ReactElement => (
-    <CardBootstrap className="card-blue rounded">
-        <CardBootstrap.Body>
-            <CardBootstrap.Link href={`/${props.link}`}>
-                <CardBootstrap.Text>
-                    <i className={`bi bi-${props.icone}`}></i>
-                </CardBootstrap.Text>
-                <CardBootstrap.Title>{props.titulo}</CardBootstrap.Title>
+    <CardBootstrap className="card-blue">
+        <CardBootstrap.Body className="w-100">
+            <CardBootstrap.Link href={`/${props.link}`} >
+                 {props.icone} 
+                 <CardBootstrap.Title className="text-yellow fs-2 ">{props.titulo}</CardBootstrap.Title>
             </CardBootstrap.Link>
         </CardBootstrap.Body>
     </CardBootstrap>
 );
+
+
 
 export default Card;
