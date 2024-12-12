@@ -1,17 +1,27 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { Button, CardLink, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { login } from "../services/auth";
-import { useNavigate } from "react-router-dom";
+import api from "../services/api";
 
 /**
  * @description Página de login.
  * @author Lucas Ronchi <@lucas0headshot>
  * @since 25/11/2024
  */
+
+interface User {
+  email: string,
+  password: string
+}
+
+interface Response {
+  token: string
+}
+
+
 const Login = (): ReactElement => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
-  const navigate = useNavigate();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -21,16 +31,26 @@ const Login = (): ReactElement => {
     setSenha(event.target.value);
   }
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.info("Email:", email);
     console.info("Senha:", senha);
 
-    //!Realocar lógica
-    login(email + senha);
+    const user: User = {
+      email: email,
+      password: senha
+    }
+
+    const response = await api.post<Response>('/user/login', user)
+
+    console.log(response.data);
+    
+    const { token } = response.data;
+
+    login(token);
 
     alert("Logado com sucesso!");
-    navigate("/");
+    window.location.assign("/home")
   };
 
   return (

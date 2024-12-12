@@ -2,14 +2,26 @@ import React, { useEffect, useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Alert, Spinner } from "react-bootstrap";
 import { FaPlusCircle, FaEdit, FaTrash } from "react-icons/fa";
 import Axios from "axios";
+import '../../assets/css/pages/documentos.css'
 
 interface Document {
   id: number;
   nome: string;
-  descricao: string;
-  dataUpload: string;
   categoria: string;
+  titulo: string;
+  path: string;
+  dataUpload: string;
+  dataDownload?: string;
+  dataUpdate?: string;
+  tipoDocumento: string;
+  tipoArquivo: string;
+  aluno: { id: number; nome: string };
+  downloadedBy?: { id: number; username: string };
+  uploadedBy: { id: number; username: string };
+  prevVersion?: { id: number; titulo: string };
+  isLast: boolean;
 }
+
 
 const DocumentosPage = (): React.ReactElement => {
   const [documents, setDocuments] = useState<Document[]>([]);
@@ -22,16 +34,16 @@ const DocumentosPage = (): React.ReactElement => {
   const fetchDocuments = async () => {
     setLoading(true);
     try {
-      const response = await Axios.get<{ content: Document[] }>('http://localhost:8080/api/documentos'); // Altere para a URL do seu backend
+      const response = await Axios.get<{ content: Document[] }>('http://localhost:8080/documentos/list'); // Altere para a URL do seu backend
       setDocuments(response.data.content || []);
-      setFilteredDocuments(response.data.content || []);
+      setFilteredDocuments(response.data.content || []); 
     } catch (err) {
       setError('Erro ao carregar documentos.');
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     fetchDocuments();
   }, []);
@@ -41,7 +53,6 @@ const DocumentosPage = (): React.ReactElement => {
     setSearchTerm(term);
     const filtered = documents.filter(document =>
       document.nome.toLowerCase().includes(term) ||
-      document.descricao.toLowerCase().includes(term) ||
       document.categoria.toLowerCase().includes(term)
     );
     setFilteredDocuments(filtered);
@@ -70,20 +81,20 @@ const DocumentosPage = (): React.ReactElement => {
     );
   };
 
-  return (
+  return ( 
     <div className="container mt-4">
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1>Documentos</h1>
         <div>
-          <Button variant="primary" className="me-2">
+          <Button variant="primary" className="me-2 button-blue">
             <FaPlusCircle className="me-1" /> Cadastrar
           </Button>
-          <Button variant="warning" className="me-2">
+          <Button variant="primary" className="me-2 button-blue">
             <FaEdit className="me-1" /> Editar
           </Button>
-          <Button variant="danger" onClick={handleDelete} disabled={selectedDocuments.length === 0}>
-            <FaTrash className="me-1" /> Excluir
+          <Button variant="primary" onClick={handleDelete} disabled={selectedDocuments.length === 0}>
+            <FaTrash className="me-1 button-blue" /> Excluir
           </Button>
         </div>
       </div>
@@ -98,7 +109,7 @@ const DocumentosPage = (): React.ReactElement => {
           aria-describedby="search-button"
         />
         <Button variant="outline-secondary" id="search-button">
-          <i className="bi bi-search"></i>
+          <i className="search"></i>
         </Button>
       </InputGroup>
 
@@ -117,10 +128,14 @@ const DocumentosPage = (): React.ReactElement => {
               <th>
                 <Form.Check type="checkbox" />
               </th>
-              <th>Nome do Documento</th>
-              <th>Descrição</th>
+              <th>Título</th>
+              <th>Tipo de Documento</th>
+              <th>Tipo de Arquivo</th>
               <th>Data de Upload</th>
+              <th>Data Download</th>
               <th>Categoria</th>
+              <th>Aluno</th>
+              <th>Enviado por</th>
             </tr>
           </thead>
           <tbody>
@@ -133,10 +148,15 @@ const DocumentosPage = (): React.ReactElement => {
                     checked={selectedDocuments.includes(document.id)}
                   />
                 </td>
-                <td>{document.nome}</td>
-                <td>{document.descricao}</td>
+                <td>{document.titulo}</td>
+                <td>{document.tipoDocumento}</td>
+                <td>{document.tipoArquivo}</td>
                 <td>{document.dataUpload}</td>
-                <td>{document.categoria}</td>
+                <td>{document.dataDownload}</td>
+                <td>{document.tipoArquivo}</td>
+                <td>{document.downloadedBy?.username}</td>
+                <td>{document.aluno?.nome || "Não informado"}</td>
+                <td>{document.uploadedBy?.username || "Não informado"}</td>
               </tr>
             ))}
           </tbody>
@@ -147,8 +167,6 @@ const DocumentosPage = (): React.ReactElement => {
       <Pagination className="justify-content-end">
         <Pagination.Prev />
         <Pagination.Item active>{1}</Pagination.Item>
-        <Pagination.Item>{2}</Pagination.Item>
-        <Pagination.Item>{3}</Pagination.Item>
         <Pagination.Next />
       </Pagination>
     </div>
