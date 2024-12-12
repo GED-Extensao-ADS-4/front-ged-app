@@ -58,9 +58,9 @@ const Home = (): ReactElement => {
         setCarregando(true);
 
         try {
-            const resposta = await api.get<{ content: Aluno[] }>('/api/alunos/all');
-            setAlunos(resposta.data.content || []);
-            setAlunosFiltrados(resposta.data.content || []);
+            const resposta = await api.get<{ content: Aluno[] }>('/alunos/all');
+            setAlunos(resposta.data || []);
+            setAlunosFiltrados(resposta.data || []);
         } catch (err) {
             setErro(true);
             console.error("Erro ao buscar alunos:", err);
