@@ -1,0 +1,8 @@
+.tr-azul td {
+  text-align: center;
+}
+
+.thead-azul th {
+  text-align: center;
+  color: var(--azul);
+}

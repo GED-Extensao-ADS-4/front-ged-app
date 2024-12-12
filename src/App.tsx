@@ -1,5 +1,6 @@
 import { ReactElement } from 'react'
 import Rotas from './routes/routes';
+import "./assets/css/variaveis.css";
 import "./assets/css/style.css";
 
 /**
