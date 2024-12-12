@@ -6,6 +6,8 @@ import '../../assets/css/pages/documentos.css'
 
 interface Document {
   id: number;
+  nome: string;
+  categoria: string;
   titulo: string;
   path: string;
   dataUpload: string;
@@ -32,16 +34,16 @@ const DocumentosPage = (): React.ReactElement => {
   const fetchDocuments = async () => {
     setLoading(true);
     try {
-      const response = await Axios.get<{ content: Document[] }>('http://localhost:8080/api/documentos'); // Altere para a URL do seu backend
+      const response = await Axios.get<{ content: Document[] }>('http://localhost:8080/documentos/list'); // Altere para a URL do seu backend
       setDocuments(response.data.content || []);
-      setFilteredDocuments(response.data.content || []);
+      setFilteredDocuments(response.data.content || []); 
     } catch (err) {
       setError('Erro ao carregar documentos.');
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     fetchDocuments();
   }, []);
@@ -51,7 +53,6 @@ const DocumentosPage = (): React.ReactElement => {
     setSearchTerm(term);
     const filtered = documents.filter(document =>
       document.nome.toLowerCase().includes(term) ||
-      document.descricao.toLowerCase().includes(term) ||
       document.categoria.toLowerCase().includes(term)
     );
     setFilteredDocuments(filtered);
@@ -80,7 +81,7 @@ const DocumentosPage = (): React.ReactElement => {
     );
   };
 
-  return (
+  return ( 
     <div className="container mt-4">
       {/* Header */}
       <div className="d-flex justify-content-between align-items-center mb-3">
@@ -108,7 +109,7 @@ const DocumentosPage = (): React.ReactElement => {
           aria-describedby="search-button"
         />
         <Button variant="outline-secondary" id="search-button">
-          <i className="bi bi-search"></i>
+          <i className="search"></i>
         </Button>
       </InputGroup>
 
@@ -129,7 +130,9 @@ const DocumentosPage = (): React.ReactElement => {
               </th>
               <th>Título</th>
               <th>Tipo de Documento</th>
+              <th>Tipo de Arquivo</th>
               <th>Data de Upload</th>
+              <th>Data Download</th>
               <th>Categoria</th>
               <th>Aluno</th>
               <th>Enviado por</th>
@@ -147,8 +150,11 @@ const DocumentosPage = (): React.ReactElement => {
                 </td>
                 <td>{document.titulo}</td>
                 <td>{document.tipoDocumento}</td>
-                <td>{document.dataUpload}</td>
                 <td>{document.tipoArquivo}</td>
+                <td>{document.dataUpload}</td>
+                <td>{document.dataDownload}</td>
+                <td>{document.tipoArquivo}</td>
+                <td>{document.downloadedBy?.username}</td>
                 <td>{document.aluno?.nome || "Não informado"}</td>
                 <td>{document.uploadedBy?.username || "Não informado"}</td>
               </tr>
