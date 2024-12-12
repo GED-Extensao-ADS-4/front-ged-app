@@ -2,8 +2,7 @@ import { ReactElement } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home";
 import Layout from "../components/layout/Layout";
-import HomeAlunos from "../pages/alunos/HomeAlunos";
-import HomeDocumentos from "../pages/documentos/HomeDocumentos";
+import HomeAlunos from "../pages/alunos/Home";
 import DocumentosPage from "../pages/documentos/DocumentosPage";
 
 /**
