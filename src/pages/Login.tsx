@@ -1,8 +1,7 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { Button, CardLink, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { login } from "../services/auth";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../services/api";
 
 /**
  * @description Página de login.
@@ -11,7 +10,7 @@ import axios from "axios";
  */
 
 interface User {
-  username: string,
+  email: string,
   password: string
 }
 
@@ -23,7 +22,6 @@ interface Response {
 const Login = (): ReactElement => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
-  const navigate = useNavigate();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -39,21 +37,20 @@ const Login = (): ReactElement => {
     console.info("Senha:", senha);
 
     const user: User = {
-      username: email,
+      email: email,
       password: senha
     }
 
-    const response = await axios.post<Response>('http://localhost:8080/user/login', user)
+    const response = await api.post<Response>('/user/login', user)
 
     console.log(response.data);
     
     const { token } = response.data;
 
-    //!Realocar lógica
     login(token);
 
     alert("Logado com sucesso!");
-    navigate("/");
+    window.location.assign("/home")
   };
 
   return (
