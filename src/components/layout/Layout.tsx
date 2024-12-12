@@ -12,17 +12,16 @@ import Footer from './Footer';
  * @since 31/10/2024
  */
 const Layout = (): ReactElement => (
+    <>
+    <Header />
     <Container className="bg-light">
-        <Header />
-
-        <Row>
+        <Row className='d-flex justify-content-center align-items-center w-100  h-100 aumentaTamanho'>
             <BarreiraContraErros>
                 <Outlet />
             </BarreiraContraErros>
         </Row>
-
-        <Footer />
     </Container>
+    </>
 );
 
 export default Layout;
