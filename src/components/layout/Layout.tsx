@@ -3,7 +3,6 @@ import { Container, Row } from 'react-bootstrap'
 import BarreiraContraErros from './BarreiraContraErros';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
-import Footer from './Footer';
 
 /**
  * @description Layout do App. Contém a estrutura base da pág.
@@ -13,14 +12,14 @@ import Footer from './Footer';
  */
 const Layout = (): ReactElement => (
     <>
-    <Header />
-    <Container className="bg-light">
-        <Row className='d-flex justify-content-center align-items-center w-100  h-100 aumentaTamanho'>
-            <BarreiraContraErros>
-                <Outlet />
-            </BarreiraContraErros>
-        </Row>
-    </Container>
+        <Header />
+        <Container className="bg-light" fluid>
+            <Row>
+                <BarreiraContraErros>
+                    <Outlet />
+                </BarreiraContraErros>
+            </Row>
+        </Container>
     </>
 );
 

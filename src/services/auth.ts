@@ -36,6 +36,8 @@ export const estaAutenticado = (): boolean => getToken() !== null;
  */
 export const login = (token: string): void => localStorage.setItem(TOKEN_KEY, token);
 
+export const cadastro = (token: string): void => localStorage.setItem(TOKEN_KEY, token);
+
 
 /**
  * @description Remove o token do localStorage.
