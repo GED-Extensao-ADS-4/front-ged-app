@@ -1,17 +1,10 @@
 import { ChangeEvent, FormEvent, ReactElement, useState } from "react";
 import { Button, CardLink, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { login } from "../services/auth";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-
-/**
- * @description Página de login.
- * @author Lucas Ronchi <@lucas0headshot>
- * @since 25/11/2024
- */
+import api from "../services/api";
 
 interface User {
-  username: string,
+  email: string,
   password: string
 }
 
@@ -19,11 +12,14 @@ interface Response {
   token: string
 }
 
-
+/**
+ * @description Página de login.
+ * @author Lucas Ronchi <@lucas0headshot>, Gabrielle & Juan Carlos
+ * @since 25/11/2024
+ */
 const Login = (): ReactElement => {
   const [email, setEmail] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
-  const navigate = useNavigate();
 
   const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -39,32 +35,31 @@ const Login = (): ReactElement => {
     console.info("Senha:", senha);
 
     const user: User = {
-      username: email,
+      email: email,
       password: senha
     }
 
-    const response = await axios.post<Response>('http://localhost:8080/user/login', user)
+    const response = await api.post<Response>('/user/login', user)
 
     console.log(response.data);
-    
+
     const { token } = response.data;
 
-    //!Realocar lógica
     login(token);
 
     alert("Logado com sucesso!");
-    navigate("/");
+    window.location.assign("/home")
   };
 
   return (
-    <Container fluid className="vh-100">
-      <Row className="h-100">
-        <Col md={8} className="d-flex flex-column justify-content-center align-items-center bg-light">
+    <Container fluid className="vh-100 p-0">
+      <Row className="vh-100 p-0 m-0 gap-0">
+        <Col md={8} className="d-flex vh-100 flex-column justify-content-center align-items-center bg-light p-0">
           <Image src="/img/mapa.png" alt="Mapa do Brasil" className="mapa" />
           <h1 className="fs-1 text-blue">APAE CRICIÚMA</h1>
         </Col>
 
-        <Col md={4} className="d-flex flex-column justify-content-center align-items-center bg-blue">
+        <Col md={4} className="d-flex vh-100 flex-column justify-content-center align-items-center bg-blue p-0">
           <Form onSubmit={handleSubmit}>
             <div className="logo-wrapper">
               <Image src="/img/logo.png" alt="Logo da APAE" className="logo text-center" />

@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { getToken } from "./auth";
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
+import { getToken, logout } from "./auth";
 
 /**
  * @since 25/11/2024
@@ -15,8 +15,19 @@ api.interceptors.request.use(async (config: AxiosRequestConfig): Promise<AxiosRe
     const token = getToken();
     if (token)
         config.headers.Authorization = `Bearer ${token}`;
-    
+
     return config;
 });
+
+api.interceptors.response.use(
+    (response: AxiosResponse) => {
+        if (response.status === 403) {
+            logout();
+            location.assign("/entrar");
+        }
+
+        return response;
+    }
+);
 
 export default api;

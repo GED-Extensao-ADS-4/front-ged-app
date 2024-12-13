@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import SelectAlunos from "../../components/alunos/SelectAlunos";
+import SelectDocumentos from "../../components/documentos/SelectDocumentos";
 
 type Documento = {
   nome: string;
   tipoDocumento: string;
   tipoArquivo: string;
-  prevVersion?: number;
+  prevVersion: number | null;
   file: File | null;
 };
 
@@ -17,12 +19,12 @@ const DocumentosCadastro: React.FC = () => {
     nome: "",
     tipoDocumento: "",
     tipoArquivo: "",
-    prevVersion: undefined,
+    prevVersion: null,
     file: null,
   });
 
-  const [documentos, setDocumentos] = useState<Documento[]>([]);
-
+  const [aluno, setAluno] = useState<number>()
+  const [documentoID, setDocumentoID] = useState<number | null>(null)
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -49,42 +51,53 @@ const DocumentosCadastro: React.FC = () => {
       alert("Por favor, selecione um arquivo para upload.");
       return;
     }
-
-    const formData = new FormData();
-    formData.append("nome", documento.nome);
-    formData.append("tipoDocumento", documento.tipoDocumento);
-    formData.append("tipoArquivo", documento.tipoArquivo);
-    if (documento.prevVersion) {
-      formData.append("prevVersion", documento.prevVersion.toString());
-    }
-    formData.append("file", documento.file);
+    
+    setDocumento({
+      nome: documento.nome,
+      tipoDocumento: documento.tipoDocumento,
+      tipoArquivo: documento.tipoArquivo,
+      prevVersion: documentoID,
+      file: documento.file,
+    });
 
     try {
-      const response = await axios.post(
-        "http://localhost:8080/documentos/create",
-        formData,
+    
+      const response = await api.post(
+        `/documentos/create/${aluno}`,
+        documento,
         {
           headers: { "Content-Type": "multipart/form-data" },
         }
       );
 
-      setDocumentos((prev) => [...prev, response.data]);
-      setDocumento({
-        nome: "",
-        tipoDocumento: "",
-        tipoArquivo: "",
-        prevVersion: undefined,
-        file: null,
-      });
+      if(response.data.statusCode == 201){
+        alert(response.data.message);
+        navigate('/documentos')
+      }
     } catch (error) {
       console.error("Erro ao enviar o documento:", error);
     }
   };
 
+  const handleAluno = (event: React.ChangeEvent<HTMLInputElement>) => {    
+    const alunoID = Number(event.target.value);
+    console.log(alunoID);
+    
+    setAluno(alunoID)
+  }
+
+  const handleDocumento = (event: React.ChangeEvent<HTMLInputElement>) => {    
+    const documentoID = Number(event.target.value);
+
+    console.log(documentoID);
+    
+    setDocumentoID(documentoID === 0 ? null : documentoID)
+  }
+
   return (
     <div className="container">
       <h1 className="my-4">Cadastro de Documentos</h1>
-      <form onSubmit={handleSubmit} className="mb-4">
+      <form  className="mb-4">
         <div className="mb-3">
           <label htmlFor="nome" className="form-label">
             Nome
@@ -127,6 +140,9 @@ const DocumentosCadastro: React.FC = () => {
           </select>
         </div>
 
+        <SelectAlunos controlId='Aluno' nome="Aluno" onChange={handleAluno}/>
+        <SelectDocumentos controlId="Documento" nome="Documento" onChange={handleDocumento} idAluno={Number(aluno)}/>
+
         <div className="mb-3">
           <label htmlFor="tipoArquivo" className="form-label">
             Tipo de Arquivo
@@ -166,7 +182,7 @@ const DocumentosCadastro: React.FC = () => {
           />
         </div>
 
-        <button onClick={() => navigate("/documentos")} type="submit" className="btn btn-primary">
+        <button onClick={handleSubmit} type="submit" className="btn btn-primary">
           Enviar
         </button>
         <Button
