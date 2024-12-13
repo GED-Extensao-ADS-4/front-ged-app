@@ -51,7 +51,7 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
 <table>
   <tr>
     <td align="center"><a href="https://github.com/lucas0headshot"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81264339?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Lucas Ronchi</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
-    <td align="center"><a href="https://github.com/JuannCarloss"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/113259173?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Juan</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/JuannCarloss"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/113259173?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Juan</b></sub><br /><a href="#" title="Full-Stack / Gerente">👨🏻‍💻</a></a></td>
     <td align="center"><a href="https://github.com/LucasRBeckhauser"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/127861163?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Beckhauser</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
     <td align="center"><a href="https://github.com/Douglas-z"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/124857063?v=4" width="100px;" alt=""/><br /><sub><b>Douglas</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
     <td align="center"><a href="https://github.com/RaphaelAzambuja"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/155395078?v=4" width="100px;" alt=""/><br /><sub><b>Raphael</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
@@ -73,6 +73,12 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
   <tr>
     <td align="center"><a href="https://github.com/PamellaCastro"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/103909758?v=4" width="100px;" alt=""/><br /><sub><b>Pâmela</b></sub><br /><a href="#" title="Tester">🧪</a></a></td>
     <td align="center"><a href="https://github.com/patrickfermino"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/136861106?v=4" width="100px;" alt=""/><br /><sub><b>Patrick</b></sub><br /><a href="#" title="Tester">🧪</a></a></td>
+    <td align="center"><a href="https://github.com/Mateusvp1"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/130248075?v=4" width="100px;" alt=""/><br /><sub><b>Matheus</b></sub><br /><a href="#" title="UI/UX / Protótipo">🖼️</a></a></td>
+    <td align="center"><a href="https://github.com/Caetano05"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/140859834?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Caetano</b></sub><br /><a href="#" title="Gerente">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/dmsommacal"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/58313261?v=4" width="100px;" alt=""/><br /><sub><b>Daniela</b></sub><br /><a href="#" title="Dona do Produto">👨🏻‍💻</a></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/CaduhPavei "><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/127527895?v=4" width="100px;" alt=""/><br /><sub><b>Ricardo</b></sub><br /><a href="#" title="Gerente">👨🏻‍💻</a></a></td>
   </tr>
 </table>
 
