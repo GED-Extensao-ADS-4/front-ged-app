@@ -65,12 +65,44 @@ const DocumentosPage = (): React.ReactElement => {
     );
   };
 
+  const handleDownload = async (id: number, nome: string) => {
+    try {
+      const response = await api.get(`http://localhost:8080/documentos/download/${id}`, {
+        responseType: 'blob',
+      });
+  
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+  
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', nome);
+  
+      document.body.appendChild(link);
+  
+      link.click();
+  
+      link.parentNode?.removeChild(link);
+  
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Erro ao fazer download:', error);
+    }
+
+    fetchDocuments();
+  }
+
+  const handleRedirectToCadastro = () => {
+    console.log('clicou');
+    
+    window.location.assign('/cadastrar')
+  }
+
   return ( 
     <div className="container mt-4">
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h1>Documentos</h1>
         <div>
-          <Button variant="primary" className="me-2 button-blue">
+          <Button variant="primary" className="me-2 button-blue" onClick={handleRedirectToCadastro} >
             <FaPlusCircle className="me-1" /> Cadastrar
           </Button>
           <Button variant="primary" className="me-2 button-blue">
@@ -87,9 +119,6 @@ const DocumentosPage = (): React.ReactElement => {
           aria-label="Pesquisar"
           aria-describedby="search-button"
         />
-        <Button variant="outline-secondary" id="search-button">
-          <i className="search"></i>
-        </Button>
       </InputGroup>
 
       {error && <Alert variant="danger">{error}</Alert>}
@@ -139,6 +168,7 @@ const DocumentosPage = (): React.ReactElement => {
                 <td>{document.aluno?.nome || "Não informado"}</td>
                 <td>{document.aluno?.cpf || "Não informado"}</td>
                 <td>{document.aluno?.deficiencia || "Não informado"}</td>
+                <td><Button variant="secondary" onClick={() => handleDownload(document.id, document.nome)}>Baixar</Button></td>
               </tr>
             ))}
           </tbody>
