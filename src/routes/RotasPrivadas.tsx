@@ -6,6 +6,7 @@ import HomeAlunos from "../pages/alunos/HomeAlunos";
 import HomeDocumentos from "../pages/documentos/HomeDocumentos";
 import DocumentosPage from "../pages/documentos/DocumentosPage";
 import DocumentosCadastro from "../pages/documentos/DocumentosCadastro";
+import DetalhesUsuario from "../pages/usuario/DetalhesUsuario";
 
 /**
  * @description Rotas privadas da App.
@@ -21,6 +22,10 @@ const RotasPrivadas = (): ReactElement => (
             <Route path="alunos" element={<HomeAlunos />} />
             <Route path="documentos" element={<DocumentosPage />} />
             <Route path="/cadastrar" element={<DocumentosCadastro />} />
+
+            <Route path="usuario" element={<DetalhesUsuario />} />
+
+
         </Route>
     </Routes>
 );
