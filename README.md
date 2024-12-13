@@ -3,7 +3,7 @@
 </h1>
 
 <h4 align="center">
-	🚧  GED - APAE 📂 Em andamento 🚀 🚧
+	GED - APAE 📂 Concluído
 </h4>
 
 <p align="center">
@@ -34,7 +34,8 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
 
 # ⚙️ Funcionalidades
 
-- [x] Informar funcionalidades...
+- [x] Controle de Documentos
+- [x] Controle de Alunos
 
 
 ---
@@ -49,9 +50,29 @@ Este é o Front-End do projeto de gestão de documentos para a APAE de Criciúma
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/lucas0headshot"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81264339?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Lucas</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/lucas0headshot"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81264339?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Lucas Ronchi</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
     <td align="center"><a href="https://github.com/JuannCarloss"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/113259173?s=100&v=4" width="100px;" alt=""/><br /><sub><b>Juan</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
-    Informar o restante...
+    <td align="center"><a href="https://github.com/LucasRBeckhauser"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/127861163?v=4" width="100px;" alt=""/><br /><sub><b>Lucas Beckhauser</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/Douglas-z"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/124857063?v=4" width="100px;" alt=""/><br /><sub><b>Douglas</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/RaphaelAzambuja"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/155395078?v=4" width="100px;" alt=""/><br /><sub><b>Raphael</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/brunojucoski"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/141188686?v=4" width="100px;" alt=""/><br /><sub><b>Bruno</b></sub><br /><a href="#" title="UI/UX / Tester">🎨🧪</a></a></td>
+    <td align="center"><a href="https://github.com/marcus-almeida1"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/89551386?v=4" width="100px;" alt=""/><br /><sub><b>Marcus</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/Carrerogabriel"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/132373775?v=4" width="100px;" alt=""/><br /><sub><b>Gabriel Zomer</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/manuela-sventnickas"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/140624942?v=4" width="100px;" alt=""/><br /><sub><b>Manuela</b></sub><br /><a href="#" title="Full-Stack">👩🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/GustavomoraesJ"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/141188511?v=4" width="100px;" alt=""/><br /><sub><b>Gustavo</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/andreminuzzi"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/160799212?v=4" width="100px;" alt=""/><br /><sub><b>Andre Minuzzi</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/ctrl-Leonardo"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/126528551?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/duckdrezis"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/130728657?v=4" width="100px;" alt=""/><br /><sub><b>André Nogueira</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/RenanZanette"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/141188417?v=4" width="100px;" alt=""/><br /><sub><b>Renan</b></sub><br /><a href="#" title="Full-Stack">👨🏻‍💻</a></a></td>
+    <td align="center"><a href="https://github.com/GabrieleBronze"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/136652580?v=4" width="100px;" alt=""/><br /><sub><b>Gabrielle</b></sub><br /><a href="#" title="Full-Stack">👩🏻‍💻</a></a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/PamellaCastro"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/103909758?v=4" width="100px;" alt=""/><br /><sub><b>Pâmela</b></sub><br /><a href="#" title="Tester">🧪</a></a></td>
+    <td align="center"><a href="https://github.com/patrickfermino"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/136861106?v=4" width="100px;" alt=""/><br /><sub><b>Patrick</b></sub><br /><a href="#" title="Tester">🧪</a></a></td>
   </tr>
 </table>
 
