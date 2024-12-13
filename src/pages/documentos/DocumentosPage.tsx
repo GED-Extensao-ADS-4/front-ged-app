@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Alert, Spinner } from "react-bootstrap";
-import { FaPlusCircle, FaEdit, FaRecycle } from "react-icons/fa";
+import { FaPlusCircle, FaRecycle } from "react-icons/fa";
 import '../../assets/css/pages/documentos.css'
 import api from "../../services/api";
 
@@ -25,7 +25,6 @@ const DocumentosPage = (): React.ReactElement => {
   const [filteredDocuments, setFilteredDocuments] = useState<Document[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [selectedDocuments, setSelectedDocuments] = useState<number[]>([]);
   const [error, setError] = useState<string | null>(null);
   
   const fetchDocuments = async () => {
@@ -49,21 +48,11 @@ const DocumentosPage = (): React.ReactElement => {
     fetchDocuments();
   }, []);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const term = e.target.value.toLowerCase();
-    setSearchTerm(term);
-    const filtered = documents.filter(document =>
-      document.nome.toLowerCase().includes(term)
-    );
-    setFilteredDocuments(filtered);
-  };
-
-  const handleSelectDocument = (id: number) => {
-    setSelectedDocuments(prevSelected =>
-      prevSelected.includes(id)
-        ? prevSelected.filter(selectedId => selectedId !== id)
-        : [...prevSelected, id]
-    );
+    setSearchTerm(term);    
+    const  response = await api.get<{ content: Document[] }>(`/documentos/list?aluno=${term}`);
+    setFilteredDocuments(response.data);
   };
 
   const handleDownload = async (id: number, nome: string) => {
