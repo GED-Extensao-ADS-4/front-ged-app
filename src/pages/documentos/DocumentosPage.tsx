@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Form, InputGroup, Pagination, Alert, Spinner } from "react-bootstrap";
-import { FaPlusCircle, FaEdit } from "react-icons/fa";
+import { FaPlusCircle, FaEdit, FaRecycle } from "react-icons/fa";
 import '../../assets/css/pages/documentos.css'
 import api from "../../services/api";
 
@@ -38,6 +38,7 @@ const DocumentosPage = (): React.ReactElement => {
       console.log(response);
       
     } catch (err) {
+      console.error(err);
       setError('Erro ao carregar documentos.');
     } finally {
       setLoading(false);
@@ -91,10 +92,25 @@ const DocumentosPage = (): React.ReactElement => {
     fetchDocuments();
   }
 
-  const handleRedirectToCadastro = () => {
-    console.log('clicou');
-    
+  const handleRedirectToCadastro = () => {    
     window.location.assign('/cadastrar')
+  }
+
+  const handleDocumentById = async (id: number) => {
+    setLoading(true);
+    try {
+      const response = await api.get<{ content: Document[] }>(`/documentos/${id}`);
+      setDocuments(response.data || []);
+      setFilteredDocuments(response.data || []); 
+
+      console.log(response);
+      
+    } catch (err) {
+      console.error(err);
+      setError('Erro ao carregar documentos.');
+    } finally {
+      setLoading(false);
+    }
   }
 
   return ( 
@@ -105,8 +121,8 @@ const DocumentosPage = (): React.ReactElement => {
           <Button variant="primary" className="me-2 button-blue" onClick={handleRedirectToCadastro} >
             <FaPlusCircle className="me-1" /> Cadastrar
           </Button>
-          <Button variant="primary" className="me-2 button-blue">
-            <FaEdit className="me-1" /> Editar
+          <Button variant="primary" className="me-2 button-blue" onClick={fetchDocuments} >
+            <FaRecycle className="me-1" /> Recarregar
           </Button>
         </div>
       </div>
@@ -131,9 +147,6 @@ const DocumentosPage = (): React.ReactElement => {
         <Table bordered hover>
           <thead>
             <tr>
-              <th>
-                <Form.Check type="checkbox" />
-              </th>
               <th>Título</th>
               <th>Tipo de Documento</th>
               <th>Tipo de Arquivo</th>
@@ -149,14 +162,7 @@ const DocumentosPage = (): React.ReactElement => {
           </thead>
           <tbody>
             {filteredDocuments.map((document) => (
-              <tr key={document.id}>
-                <td>
-                  <Form.Check
-                    type="checkbox"
-                    onChange={() => handleSelectDocument(document.id)}
-                    checked={selectedDocuments.includes(document.id)}
-                  />
-                </td>
+              <tr key={document.id} onClick={() => handleDocumentById(document.id)} >
                 <td>{document.nome}</td>
                 <td>{document.tipoDocumento}</td>
                 <td>{document.tipoArquivo}</td>
