@@ -12,7 +12,6 @@ interface Aluno {
     isAtivo?: boolean;
     telefone: string;
     sexo: string;
-    email: string;
     deficiencia: string;
     dataEntrada?: string;
     observacoes: string;
@@ -23,6 +22,7 @@ interface Aluno {
     rua: string;
     numero: number;
     complemento: string;
+    cep: string;
 }
 
 export default Aluno;
