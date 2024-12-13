@@ -7,13 +7,20 @@ import { FaBars } from "react-icons/fa"; // Ícone personalizado
 import { logout } from "../../services/auth";
 import "../../assets/css/pages/header.css"
 import Icone from "../common/Icone";
+import { useNavigate } from "react-router-dom";
 
 const Header = (): ReactElement => {
+    const navigate = useNavigate();
+
     const handleSair = () => {
         if (window.confirm("Deseja realmente sair?")) {
             logout();
             location.reload();
         }
+    };
+
+    const handleNavigate = (rota: string) => {
+        navigate(rota);
     };
 
     return (
@@ -31,8 +38,8 @@ const Header = (): ReactElement => {
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav className="me-auto">
-                            <Nav.Link href="alunos" className="AMARELO"><Icone nome="address-book" texto="ALUNOS" /></Nav.Link>
-                            <Nav.Link href="documentos" className="AMARELO"><Icone nome="folder-open" texto="DOCUMENTOS" /></Nav.Link>
+                            <Nav.Link onClick={() => handleNavigate("alunos")} className="AMARELO"><Icone nome="address-book" texto="ALUNOS" /></Nav.Link>
+                            <Nav.Link onClick={() => handleNavigate("documentos")} className="AMARELO"><Icone nome="folder-open" texto="DOCUMENTOS" /></Nav.Link>
                             <Nav.Link href="#" onClick={handleSair} className="AMARELO"><Icone nome="sign-out" texto="SAIR" /></Nav.Link>
                         </Nav>
                     </Offcanvas.Body>
