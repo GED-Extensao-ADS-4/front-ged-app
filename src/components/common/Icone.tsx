@@ -13,7 +13,10 @@ interface IconeProps {
  */
 const Icone = (props: IconeProps): ReactElement => {
     return (
-        <i className={`fa fa-${props.nome} ms-2`}>{props.texto}</i>
+        <>
+            <i className={`fa fa-${props.nome} mx-1`}></i>
+            {props.texto}
+        </>
     )
 };
 
