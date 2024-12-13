@@ -4,13 +4,13 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { FaBars } from "react-icons/fa"; // Ícone personalizado
+import { logout } from "../../services/auth";
+import "../../assets/css/pages/header.css"
 
 const Header = (): ReactElement => (
     <Navbar expand="md" className="bg-primary">
         <Container>
-            <Navbar.Brand href="#home" className="text-white">
-                Navbar
-            </Navbar.Brand>
+           
             <Navbar.Toggle
                 aria-controls="offcanvasNavbar"
                 className="text-white border-0"
@@ -23,9 +23,9 @@ const Header = (): ReactElement => (
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     <Nav className="me-auto">
-                        <Nav.Link href="#">Home</Nav.Link>
-                        <Nav.Link href="#">Features</Nav.Link>
-                        <Nav.Link href="#">Pricing</Nav.Link>
+                        <Nav.Link href="alunos" className="AMARELO">ALUNOS</Nav.Link>
+                        <Nav.Link href="documentos" className="AMARELO">DOCUMENTOS</Nav.Link>
+                        <Nav.Link href="#" onClick={()=> logout()} className="AMARELO">SAIR</Nav.Link>
                     </Nav>
                 </Offcanvas.Body>
             </Navbar.Offcanvas>
