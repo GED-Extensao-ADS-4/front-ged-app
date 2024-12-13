@@ -14,11 +14,10 @@ interface CardProps {
  */
 const Card = (props: CardProps): ReactElement => (
     <CardBootstrap className="card-blue">
-        <CardBootstrap.Body className="w-100">
-            <CardBootstrap.Link href={`/${props.link}`} >
-                 {props.icone} 
-                 <CardBootstrap.Title className="text-yellow fs-2 ">{props.titulo}</CardBootstrap.Title>
-            </CardBootstrap.Link>
+        <CardBootstrap.Body className="w-100 d-flex justify-content-center align-items-center flex-column">
+            <CardBootstrap.Link className="stretched-link" href={`/${props.link}`} />
+            {props.icone}
+            <CardBootstrap.Title className="text-yellow fs-2 ">{props.titulo}</CardBootstrap.Title>
         </CardBootstrap.Body>
     </CardBootstrap>
 );
